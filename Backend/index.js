@@ -1,9 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const port = 3000
 const router=require('./router')
 let mongoDBConfig=require('./dbConfig/mongoDBConfig')
-require('dotenv').config()
+
 
 mongoDBConfig()
 

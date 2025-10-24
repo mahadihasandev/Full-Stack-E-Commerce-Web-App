@@ -1,6 +1,7 @@
 let emailRegex=require('../helper/EmailRegex')
 let PasswordRegex=require('../helper/PasswordRegex')
 let PasswordRegexEight=require('../helper/PasswordRegexEight')
+const UserSchema = require('../model/UserSchema')
 
 let Registration=(req,res)=>{  
     let {username,email,password}=req.body
@@ -17,7 +18,14 @@ let Registration=(req,res)=>{
     }else if(!PasswordRegexEight(password)){
           res.send({error:"enter a at least 8 character" })
     }else{
-        res.send({Success:"account created"})
+       let userData=new UserSchema({
+        username,
+        email,
+        password,
+
+       })
+       userData.save()
+       res.send({success:"data send"})
     }
 }
 module.exports=Registration

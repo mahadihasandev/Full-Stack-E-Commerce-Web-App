@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-let DBUserName=process.env.DB_USERNAME
-let DBPassword=process.env.DB_PASSWORD
+
 
 const mongoDBConfig=()=>{
-    mongoose.connect(`mongodb+srv://${DBUserName}:${DBPassword}@cluster0.sfbfczy.mongodb.net/userCredential?appName=Cluster0`);
+    mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.iakozvn.mongodb.net/${process.env.DB_NAME}?appName=Cluster0`)
+    .then(()=>console.log("Connected"))
 }
 
 module.exports=mongoDBConfig
