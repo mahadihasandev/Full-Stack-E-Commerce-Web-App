@@ -25,7 +25,7 @@ let Registration=(req,res)=>{
 
        })
        userData.save()
-       res.send({success:"data send"})
+       res.send(userData)
     }
 }
 module.exports=Registration

@@ -1,8 +1,11 @@
 import React from 'react'
+import Registration from '../Layouts/Registration'
 
 function App() {
   return (
-    <div className='text-red-300'>this is dashboard</div>
+    <div>
+      <Registration/>
+    </div>
   )
 }
 
