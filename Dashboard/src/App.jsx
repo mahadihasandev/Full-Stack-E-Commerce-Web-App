@@ -2,7 +2,7 @@ import React from 'react'
 
 function App() {
   return (
-    <div>this is dashboard</div>
+    <div className='text-red-300'>this is dashboard</div>
   )
 }
 
