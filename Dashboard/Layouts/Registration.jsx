@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 
 function Registration() {
 const onFinish =async values => {
@@ -11,7 +11,7 @@ const onFinish =async values => {
     email:values.email,
     password:values.password
   },{
-    headers:{auth:"123456780"}
+    headers:{auth:"12345678"}
   })
   console.log(data);
   
@@ -22,28 +22,32 @@ const onFinishFailed = errorInfo => {
 };
 
   return (
-    <div className='flex flex-col items-center mt-28'> 
-    <h1 className='mb-5'> Dashboard Registration</h1>
+    <div className='flex flex-col items-center pt-28 bg-[#0c3635] h-screen'> 
+    <h1 className='mb-5 ml-24 text-[#ffffff] font-sans'> Dashboard Registration</h1>
          <Form
     name="basic"
+    
     labelCol={{ span: 9 }}
     wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 400 }}
+    style={{ maxWidth: 400}}
     initialValues={{ remember: true }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
+    
+  
   >
     <Form.Item
-      label="Username"
+      label={<span style={{ color: '#ffffff' }}>Username</span>}
       name="username"
       rules={[{ required: true, message: 'Please input your username!' }]}
     >
       <Input />
     </Form.Item>
 
-    <Form.Item
-      label="Email"
+    <Form.Item 
+  
+      label={<span style={{ color: '#ffffff',paddingRight:"25px" }}>Email</span>}
       name="email"
       rules={[{ required: true, message: 'Please input your email!' }]}
     >
@@ -51,7 +55,7 @@ const onFinishFailed = errorInfo => {
     </Form.Item>
 
     <Form.Item
-      label="Password"
+      label={<span style={{ color: '#ffffff' }}>Password</span>}
       name="password"
       rules={[{ required: true, message: 'Please input your password!' }]}
     >
@@ -59,7 +63,7 @@ const onFinishFailed = errorInfo => {
     </Form.Item>
 
     <Form.Item name="remember" valuePropName="checked" label={null}>
-      <Checkbox>Remember me</Checkbox>
+      <Checkbox style={{ color: '#ffffff' }}>Remember me</Checkbox>
     </Form.Item>
 
     <Form.Item label={null}>

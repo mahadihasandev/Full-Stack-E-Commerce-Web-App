@@ -2,6 +2,7 @@ let emailRegex=require('../helper/EmailRegex')
 let PasswordRegex=require('../helper/PasswordRegex')
 let PasswordRegexEight=require('../helper/PasswordRegexEight')
 const UserSchema = require('../model/UserSchema')
+const bcrypt = require('bcrypt');
 
 let Registration=(req,res)=>{  
     let {username,email,password}=req.body
@@ -18,14 +19,22 @@ let Registration=(req,res)=>{
     }else if(!PasswordRegexEight(password)){
           res.send({error:"enter a at least 8 character" })
     }else{
-       let userData=new UserSchema({
+        bcrypt.genSalt(10, function(err, salt){
+        bcrypt.hash(password, salt, function(err, hash) {
+            console.log(hash);
+            
+        let userData=new UserSchema({
         username,
         email,
-        password,
+        password:hash,
 
        })
-       userData.save()
+        userData.save()
        res.send(userData)
+    });
+});
+ 
+      
     }
 }
 module.exports=Registration

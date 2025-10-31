@@ -1,4 +1,4 @@
-let secureApi=(req,res)=>{
+let secureApi=(req,res,next)=>{
     if(req.headers.auth=="12345678"){
         next()
     }else{

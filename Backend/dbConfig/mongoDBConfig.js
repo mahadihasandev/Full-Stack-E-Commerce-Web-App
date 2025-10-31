@@ -7,3 +7,5 @@ const mongoDBConfig=()=>{
 }
 
 module.exports=mongoDBConfig
+
+//  mongodb+srv://arnob4all_db_user:3jpJqBItB5sDkkU5@cluster0.iakozvn.mongodb.net/usercredential?appName=Cluster0
