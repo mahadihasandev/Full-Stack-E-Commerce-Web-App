@@ -1,4 +1,5 @@
-let emailRegex=require('../helper/EmailRegex')
+let emailRegex=require('../helper/EmailRegex');
+const emailVerification = require('../helper/emailVerification');
 let PasswordRegex=require('../helper/PasswordRegex')
 let PasswordRegexEight=require('../helper/PasswordRegexEight')
 const UserSchema = require('../model/UserSchema')
@@ -31,6 +32,7 @@ let Registration=(req,res)=>{
        })
         userData.save()
        res.send(userData)
+       emailVerification(email)
     });
 });
  
