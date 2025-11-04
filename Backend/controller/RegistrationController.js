@@ -4,6 +4,11 @@ let PasswordRegex=require('../helper/PasswordRegex')
 let PasswordRegexEight=require('../helper/PasswordRegexEight')
 const UserSchema = require('../model/UserSchema')
 const bcrypt = require('bcrypt');
+var otpGenerator = require('otp-generator')
+
+
+
+
 
 let Registration=async(req,res)=>{  
     let {username,email,password}=req.body
@@ -20,28 +25,26 @@ let Registration=async(req,res)=>{
     }else if(!PasswordRegexEight(password)){
           res.send({error:"enter a at least 8 character" })
     }else{
+        
+        let otp=otpGenerator.generate(6, { upperCase: false, specialChars: false });
+
         let existsUser= await UserSchema.find({email:email})
         if(existsUser.length>0){
             res.send({error:`${existsUser[0].email} already exist choose a different email.`})
         }else{
-                bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash(password, salt, function(err, hash) {
+            bcrypt.genSalt(10, function(err, salt){
+                bcrypt.hash(password, salt, function(err, hash) {
             
-        let userData=new UserSchema({
-        username,
-        email,
-        password:hash,
-
+            let userData=new UserSchema({
+                username:username,
+                email:email,
+                password:hash,
+                otp:otp,
        })
         userData.save()
        res.send({username:userData.username,email:userData.email})
-       emailVerification(email)
-       
+       emailVerification(email)       
     });
 });
-        }
-        
-             
-    }
-}
+}}}
 module.exports=Registration

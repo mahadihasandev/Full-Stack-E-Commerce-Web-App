@@ -11,31 +11,30 @@ const onFinish =async values => {
     username:values.username,
     email:values.email,
     password:values.password
-  },{
+  },
+  {
     headers:{auth:"12345678"}
   })
-  console.log(data.data.error);
   
   if(data.data.error){
     toast.error(data.data.error)
   }else{
     toast.success("Registration complete")
   }
-  
 };
 const onFinishFailed = errorInfo => {
   console.log('Failed:', errorInfo);
 };
 
-
-
   return (
     <div className='flex flex-col items-center pt-28 bg-[#0c3635] h-screen'> 
+
     <h1 className='mb-5 ml-24 text-[#ffffff] font-sans'> Dashboard Registration</h1>
+    
     <ToastContainer />
+
          <Form
     name="basic"
-    
     labelCol={{ span: 9 }}
     wrapperCol={{ span: 16 }}
     style={{ maxWidth: 400}}
@@ -44,7 +43,6 @@ const onFinishFailed = errorInfo => {
     onFinishFailed={onFinishFailed}
     autoComplete="off"
     
-  
   >
     <Form.Item
       label={<span style={{ color: '#ffffff' }}>Username</span>}
