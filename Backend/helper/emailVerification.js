@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-let emailVerification=async(email)=>{
+let emailVerification=async(email,otp)=>{
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -27,10 +27,10 @@ const transporter = nodemailer.createTransport({
             <p style="font-size: 17px; padding-top: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 
             sans-serif;"> Please confirm This email is your, then Click in the verification button
         to create your new account. </p>
-            <button style="border: thin; margin-top: 30px; background: rgb(17, 144, 255); 
+            <h1 style="border: thin; margin-top: 30px; background: rgb(17, 144, 255); 
             color: rgb(255, 255, 255); padding: 10px 25px; border-radius: 10px; 
             font-size: 30px; font-weight: 700; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-            Verify</button>
+            ${otp}</h1>
             <div style="text-align:center; margin-top: 20px;">
                 <img style="width: 30px;" src="https://i.ibb.co.com/ycGQxcxC/Facebook-logo-square.png" alt="Facebook-logo-square">
                <img style="width: 30px;"  src="https://i.ibb.co.com/yMNG5jh/png-clipart-social-media-computer-icons-tulane-university-facebook-drawing-twitter-twitter-logo-blue.png" alt="png-clipart-social-media-computer-icons-tulane-university-facebook-drawing-twitter-twitter-logo-blue">

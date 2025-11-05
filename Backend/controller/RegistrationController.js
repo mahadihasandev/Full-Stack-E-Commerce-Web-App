@@ -7,9 +7,6 @@ const bcrypt = require('bcrypt');
 var otpGenerator = require('otp-generator')
 
 
-
-
-
 let Registration=async(req,res)=>{  
     let {username,email,password}=req.body
     if(!username){
@@ -27,8 +24,10 @@ let Registration=async(req,res)=>{
     }else{
         
         let otp=otpGenerator.generate(6, { upperCase: false, specialChars: false });
-
+       
+        
         let existsUser= await UserSchema.find({email:email})
+
         if(existsUser.length>0){
             res.send({error:`${existsUser[0].email} already exist choose a different email.`})
         }else{
@@ -43,7 +42,7 @@ let Registration=async(req,res)=>{
        })
         userData.save()
        res.send({username:userData.username,email:userData.email})
-       emailVerification(email)       
+       emailVerification(email,otp)       
     });
 });
 }}}

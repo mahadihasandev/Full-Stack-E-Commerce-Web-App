@@ -2,8 +2,10 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Registration() {
+  let navigate=useNavigate()
 const onFinish =async values => {
 
     
@@ -19,6 +21,7 @@ const onFinish =async values => {
   if(data.data.error){
     toast.error(data.data.error)
   }else{
+    navigate(`/otp/${values.email}`)
     toast.success("Registration complete")
   }
 };
