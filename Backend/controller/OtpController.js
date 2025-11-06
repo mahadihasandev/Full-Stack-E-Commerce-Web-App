@@ -6,8 +6,10 @@ let otp=async (req,res)=>{
    
    let existUser=await UserSchema.findOne({email:email})
    if(existUser){
-        if(otp==existUser.otp){
-            await UserSchema.findOneAndUpdate({email:email},{otp:""})
+        if(!existUser.emailVerified&&otp==existUser.otp){
+          console.log(otp);
+          
+            await UserSchema.findOneAndUpdate({email:email},{otp:"",emailVerified:true})
              res.send({success:"Registration complete"}) 
         }else{
             res.send({error:"Please enter a valid otp"})                       
