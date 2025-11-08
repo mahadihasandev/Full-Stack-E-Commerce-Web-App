@@ -13,7 +13,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
     <Route path="/" element={<Registration/>}></Route>
-     <Route path="/otp/:email" element={<Otp/>}></Route>
+     <Route path="/otp/:email/:otpcode" element={<Otp/>}></Route>
     </>
   )
 );

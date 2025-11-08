@@ -5,6 +5,7 @@ let PasswordRegexEight=require('../helper/PasswordRegexEight')
 const UserSchema = require('../model/UserSchema')
 const bcrypt = require('bcrypt');
 var otpGenerator = require('otp-generator')
+var jwt = require('jsonwebtoken');
 
 
 let Registration=async(req,res)=>{  
@@ -21,10 +22,13 @@ let Registration=async(req,res)=>{
         res.send({error:"enter a at least 1 digit" })
     }else if(!PasswordRegexEight(password)){
           res.send({error:"enter a at least 8 character" })
-    }else{
-        
+    }else{       
         let otp=otpGenerator.generate(6, { upperCase: false, specialChars: false });
        
+var emailEncode = jwt.sign(email,'arnob');
+var otpEncode = jwt.sign(otp,'arnob');
+
+
         
         let existsUser= await UserSchema.find({email:email})
 
@@ -36,12 +40,12 @@ let Registration=async(req,res)=>{
             
             let userData=new UserSchema({
                 username:username,
-                email:email,
+                email:emailEncode,
                 password:hash,
-                otp:otp,
+                otp:otpEncode,
        })
         userData.save()
-       res.send({username:userData.username,email:userData.email})
+       res.send({username:userData.username,email:userData.email,otp:userData.otp})
        emailVerification(email,otp)       
     });
 });

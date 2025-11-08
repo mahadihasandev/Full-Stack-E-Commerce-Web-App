@@ -1,49 +1,40 @@
 
-import { ToastContainer, toast } from 'react-toastify';
-import { Flex, Input, Typography } from 'antd';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-const { Title } = Typography;
+import { useEffect } from 'react';
 
 const Otp = () => {
 
-  let [otpData,setOtpData]=useState('')
-const {email}=useParams()
+const data=useParams()
+console.log(data);
 
-  const onChange = text => {
-    setOtpData(text)
-  };
 
-  let handleOtp=async()=>{
-      let otpDataDb=await axios.post('http://localhost:3000/api/v1/auth/otp',{
-      email:email,
-      otp:otpData,
+ useEffect(()=>{
+  let data=async ()=>{
+    await axios.post('http://localhost:3000/api/v1/auth/otp',{
+      email:data.email,
+      otp:data.otpcode,
     })
-    
-    
-    if(otpDataDb){
-      toast.success(otpDataDb.data.success)
-    }else{
-      toast.error(otpDataDb.data.error)
-    }
   }
-
-  const sharedProps = {
-    onChange,
-   
-  };
+  data()
+  console.log(data);
+  
+    
+ },[])
   return (
     <div className='flex flex-col items-center pt-40 bg-[#0c3635] h-screen'>
-      <ToastContainer />
-    <Flex gap="middle" align="flex-center" justify='flex-center' vertical>
+     
+      <h1 className='text-white font-extrabold text-5xl'>Please Wait</h1>
+
+
+    {/* <Flex gap="middle" align="flex-center" justify='flex-center' vertical>
       <h1 className='text-white text-center font-extrabold'>OTP</h1>
       <Input.OTP
         separator={i => <span style={{ color: i & 1 ? 'red' : 'blue' }}>—</span>}
         {...sharedProps}
       />
     </Flex>
-    <button onClick={handleOtp} className='bg-blue-500 px-6 text-white py-1 mt-6 rounded-lg'>Send</button>
+    <button onClick={handleOtp} className='bg-blue-500 px-6 text-white py-1 mt-6 rounded-lg'>Send</button> */}
     </div>
   );
 };
