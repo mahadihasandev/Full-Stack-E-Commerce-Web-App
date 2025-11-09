@@ -25,11 +25,9 @@ let Registration=async(req,res)=>{
     }else{       
         let otp=otpGenerator.generate(6, { upperCase: false, specialChars: false });
        
-var emailEncode = jwt.sign(email,'arnob');
-var otpEncode = jwt.sign(otp,'arnob');
+        var emailEncode = jwt.sign(email,'arnob');
+        var otpEncode = jwt.sign(otp,'arnob');
 
-
-        
         let existsUser= await UserSchema.find({email:email})
 
         if(existsUser.length>0){
@@ -45,8 +43,9 @@ var otpEncode = jwt.sign(otp,'arnob');
                 otp:otpEncode,
        })
         userData.save()
-       res.send({username:userData.username,email:userData.email,otp:userData.otp})
-       emailVerification(email,otp)       
+       
+       emailVerification(emailEncode,otpEncode) 
+       res.send({username:userData.username,email:userData.email,otp:userData.otp})      
     });
 });
 }}}

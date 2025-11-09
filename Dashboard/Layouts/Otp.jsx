@@ -1,26 +1,32 @@
 
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const Otp = () => {
-
+let navigate=useNavigate()
 const data=useParams()
-console.log(data);
-
 
  useEffect(()=>{
-  let data=async ()=>{
-    await axios.post('http://localhost:3000/api/v1/auth/otp',{
+  async function otpData(){
+   let otpInfo=await axios.post('http://localhost:3000/api/v1/auth/otp',{
       email:data.email,
       otp:data.otpcode,
     })
-  }
-  data()
-  console.log(data);
-  
     
- },[])
+    if(otpInfo.data=="otp match"){
+      navigate('/login')
+ }else{
+  navigate(`/error/${otpInfo.data.error}`)
+ }  
+  }
+  otpData()
+ 
+  
+ 
+ },[]
+)
+
   return (
     <div className='flex flex-col items-center pt-40 bg-[#0c3635] h-screen'>
      

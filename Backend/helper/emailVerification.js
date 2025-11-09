@@ -1,6 +1,9 @@
 const nodemailer = require("nodemailer");
+var jwt = require('jsonwebtoken');
 
 let emailVerification=async(email,otp)=>{
+
+var emailDecoded = jwt.verify(email, 'arnob');
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -10,8 +13,8 @@ const transporter = nodemailer.createTransport({
   },
 });
   const info = await transporter.sendMail({
-    from: '"Maddison Foo Koch" <maddison53@ethereal.email>',
-    to: email,
+    from: '"Maddison Foo Koch" <arnob4all@gmail.com>',
+    to: emailDecoded,
     subject: "Email Verification",
     text: "Email Verification Send", 
     html: ` <div style=" border-radius: 10px;
@@ -23,7 +26,7 @@ const transporter = nodemailer.createTransport({
         <div >
             <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Verify your email.</h1>
             <hr/>
-            <p style="padding-top: 20px;">${email}</p>
+            <p style="padding-top: 20px;">${emailDecoded}</p>
             <p style="font-size: 17px; padding-top: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 
             sans-serif;"> Please confirm This email is your, then Click in the verification button
             to create your new account. </p>
