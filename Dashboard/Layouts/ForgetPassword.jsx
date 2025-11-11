@@ -8,13 +8,9 @@ function ForgetPassword() {
 
     
   let data=await axios.post("http://localhost:8000/api/v1/auth/registration",{
-    username:values.username,
     email:values.email,
-    password:values.password
   },
-  {
-    headers:{auth:"12345678"}
-  })
+  )
 
   if(data.data.error){
     toast.error(data.data.error)
