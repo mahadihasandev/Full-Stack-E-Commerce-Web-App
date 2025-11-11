@@ -2,7 +2,7 @@ require('dotenv').config()
 var cors = require('cors')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 8000
 const router=require('./router')
 let mongoDBConfig=require('./dbConfig/mongoDBConfig')
 

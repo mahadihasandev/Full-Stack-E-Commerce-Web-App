@@ -9,7 +9,7 @@ const data=useParams()
 
  useEffect(()=>{
   async function otpData(){
-   let otpInfo=await axios.post('http://localhost:3000/api/v1/auth/otp',{
+   let otpInfo=await axios.post('http://localhost:8000/api/v1/auth/otp',{
       email:data.email,
       otp:data.otpcode,
     })

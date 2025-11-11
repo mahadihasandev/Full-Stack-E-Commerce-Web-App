@@ -1,6 +1,5 @@
 const UserSchema = require("../model/UserSchema")
 
-
 let otp=async (req,res)=>{
 
    let {otp,email}=req.body
