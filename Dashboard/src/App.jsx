@@ -1,6 +1,7 @@
 import React from 'react'
-
+import ForgetPassword from '../Layouts/forgetPassword';
 import Registration from '../Layouts/Registration'
+
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
      <Route path="/otp/:email/:otpcode" element={<Otp/>}></Route>
      <Route path='/login' element={<Login/>}></Route>
      <Route path='/error/:error' element={<Error/>}></Route>
+     <Route path='/forgetpassword' element={<ForgetPassword/>}></Route>
     </>
   )
 );

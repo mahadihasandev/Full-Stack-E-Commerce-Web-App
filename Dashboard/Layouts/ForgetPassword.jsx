@@ -3,10 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 
-function Login() {
-
-
-  const onFinish =async values => {
+function ForgetPassword() {
+     const onFinish =async values => {
 
     
   let data=await axios.post("http://localhost:8000/api/v1/auth/registration",{
@@ -30,9 +28,9 @@ const onFinishFailed = errorInfo => {
 };
   return (
     <div>
-      <div className='flex flex-col pt-48 pr-48 items-center bg-[#0c3635] h-screen'> 
+        <div className='flex flex-col pt-48 pr-48 items-center bg-[#0c3635] h-screen'> 
 
-    <h1 className='mb-5 ml-24 text-[#ffffff] font-sans'> Dashboard Registration</h1>
+    <h1 className='mb-5 ml-24 text-[#ffffff] font-sans'> Forget Password</h1>
     
     <ToastContainer />
 
@@ -57,14 +55,6 @@ const onFinishFailed = errorInfo => {
       <Input style={{width:"180%",padding:"10px"}}/>
     </Form.Item>
 
-    <Form.Item
-      label={<span style={{ color: '#ffffff' }}>Password</span>}
-      name="password"
-      rules={[{ required: true, message: 'Please input your password!' }]}
-    >
-      <Input.Password style={{width:"180%",padding:"10px"}}/>
-    </Form.Item>
-
     <Form.Item name="remember" valuePropName="checked" label={null}>
       <Checkbox style={{ color: '#ffffff' }}>Remember me</Checkbox>
     </Form.Item>
@@ -80,4 +70,4 @@ const onFinishFailed = errorInfo => {
   )
 }
 
-export default Login
+export default ForgetPassword
