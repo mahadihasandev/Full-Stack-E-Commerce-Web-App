@@ -33,7 +33,7 @@ const onFinishFailed = errorInfo => {
 };
 
   return (
-    <div className='flex flex-col items-center pt-28 bg-[#0c3635] h-screen'> 
+    <div className='flex flex-col pt-48 pr-48 items-center bg-[#0c3635] h-screen'> 
 
     <h1 className='mb-5 ml-24 text-[#ffffff] font-sans'> Dashboard Registration</h1>
     
@@ -55,7 +55,7 @@ const onFinishFailed = errorInfo => {
       name="username"
       rules={[{ required: true, message: 'Please input your username!' }]}
     >
-      <Input />
+      <Input style={{width:"180%",padding:"10px"}}/>
     </Form.Item>
 
     <Form.Item 
@@ -64,7 +64,7 @@ const onFinishFailed = errorInfo => {
       name="email"
       rules={[{ required: true, message: 'Please input your email!' }]}
     >
-      <Input />
+      <Input style={{width:"180%",padding:"10px"}}/>
     </Form.Item>
 
     <Form.Item
@@ -72,7 +72,7 @@ const onFinishFailed = errorInfo => {
       name="password"
       rules={[{ required: true, message: 'Please input your password!' }]}
     >
-      <Input.Password />
+      <Input.Password style={{width:"180%",padding:"10px"}}/>
     </Form.Item>
 
     <Form.Item name="remember" valuePropName="checked" label={null}>
