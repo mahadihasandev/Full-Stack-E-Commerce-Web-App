@@ -7,7 +7,7 @@ function ForgetPassword() {
      const onFinish =async values => {
 
     
-  let data=await axios.post("http://localhost:8000/api/v1/auth/registration",{
+  let data=await axios.post("http://localhost:8000/api/v1/forgetpassword",{
     email:values.email,
   },
   )

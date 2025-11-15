@@ -9,7 +9,7 @@ function Login() {
   const onFinish =async values => {
 
     
-  let data=await axios.post("http://localhost:8000/api/v1/auth/registration",{
+  let data=await axios.post("http://localhost:8000/api/v1/registration",{
    
     email:values.email,
     password:values.password
