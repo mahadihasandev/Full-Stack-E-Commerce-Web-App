@@ -20,6 +20,7 @@ const router = createBrowserRouter(
      <Route path='/login' element={<Login/>}></Route>
      <Route path='/error/:error' element={<Error/>}></Route>
      <Route path='/forgetpassword' element={<ForgetPassword/>}></Route>
+     <Route path='/changepassword' element={<ForgetPassword/>}></Route>
     </>
   )
 );
