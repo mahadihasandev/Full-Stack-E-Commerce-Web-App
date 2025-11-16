@@ -1,5 +1,5 @@
 import React from 'react'
-import ForgetPassword from '../Layouts/forgetPassword';
+
 import Registration from '../Layouts/Registration'
 
 import {
@@ -11,6 +11,8 @@ import {
 import Otp from '../Layouts/Otp';
 import Login from '../Layouts/Login';
 import Error from '../Layouts/Error';
+import ChangePassword from '../Layouts/Changepassword';
+import ForgetPassword from '../Layouts/ForgetPassword';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +22,7 @@ const router = createBrowserRouter(
      <Route path='/login' element={<Login/>}></Route>
      <Route path='/error/:error' element={<Error/>}></Route>
      <Route path='/forgetpassword' element={<ForgetPassword/>}></Route>
-     <Route path='/changepassword' element={<ForgetPassword/>}></Route>
+     <Route path='/changepassword' element={<ChangePassword/>}></Route>
     </>
   )
 );
