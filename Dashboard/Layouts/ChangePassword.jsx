@@ -2,22 +2,31 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function ChangePassword() {
+    let params=useParams()
+    let navigate=useNavigate()
      const onFinish =async values => {
 
     
   let data=await axios.post("http://localhost:8000/api/v1/forgetpassword",{
-    email:values.email,
+    email:params.email,
+    newpassword:values.password
   },
   )
 
-  if(data.data.error){
-    toast.error(data.data.error)
-  }else{
-    // navigate(`/otp/${data.data.email}/${data.data.otp}`)
-    toast.success("Registration complete")
-  }
+  if(data.data.success=="Reset Password"){
+      toast.success("Reset Password");
+      
+      setTimeout(() => {
+        navigate("/login")
+        
+      }, 2000);
+
+     }else{
+      toast.error("Credential Invited");
+     }
 };
 const onFinishFailed = errorInfo => {
   console.log('Failed:', errorInfo);
@@ -45,8 +54,8 @@ const onFinishFailed = errorInfo => {
     <Form.Item 
   
       label={<span style={{ color: '#ffffff',paddingRight:"25px" }}>Email</span>}
-      name="email"
-      rules={[{ required: true, message: 'Please input your email!' }]}
+      name="password"
+      rules={[{ required: true, message: 'Please input your New password!' }]}
     >
       <Input style={{width:"180%",padding:"10px"}}/>
     </Form.Item>

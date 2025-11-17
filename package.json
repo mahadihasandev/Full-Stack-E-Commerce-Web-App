@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "start": "nodemon index.js"
+       "start": "nodemon index.js",
+    "server": "nodemon Backend/index.js",
+    "client": "npm run dev --prefix Dashboard",
+    "dev": "concurrently \"npm:server\" \"npm:client\""
 
   },
   "dependencies": {

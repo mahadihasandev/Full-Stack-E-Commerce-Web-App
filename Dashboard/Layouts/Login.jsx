@@ -2,6 +2,7 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Login() {
 
@@ -73,6 +74,7 @@ const onFinishFailed = errorInfo => {
       </Button>
     </Form.Item>
   </Form>
+   <Link to='/forgetpassword'>Forget password ?</Link>
     </div>
     </div>
   )

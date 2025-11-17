@@ -27,14 +27,14 @@ let ForgetPassword=async (req,res)=>{
             text-align: center;
             padding: 50px 50px">
             <div >
-                <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Verify your email.</h1>
+                <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Click reset to set new password.</h1>
                 <hr/>
                 <p style="padding-top: 20px;">${email}</p>
                 <p style="font-size: 17px; padding-top: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 
                 sans-serif;"> Please confirm This email is your, then Click in the verification button
                 to create your new account. </p>
                
-                <a href="http://localhost:5173/otp/${email}/${otp}" style="border: thin; margin-top: 30px; background: rgb(17, 144, 255); 
+                <a href="http://localhost:5173/changepassword/${email}" style="border: thin; margin-top: 30px; background: rgb(17, 144, 255); 
                 color: rgb(255, 255, 255); padding: 10px 25px; border-radius: 10px; 
                 font-size: 30px; font-weight: 700; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
                 Verify</a>
