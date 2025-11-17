@@ -2,15 +2,15 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
-
+let navigate=useNavigate()
 
   const onFinish =async values => {
 
     
-  let data=await axios.post("http://localhost:8000/api/v1/registration",{
+  let data=await axios.post("http://localhost:8000/api/v1/login",{
    
     email:values.email,
     password:values.password
@@ -20,8 +20,8 @@ function Login() {
   if(data.data.error){
     toast.error(data.data.error)
   }else{
-    // navigate(`/otp/${data.data.email}/${data.data.otp}`)
-    toast.success("Registration complete")
+    navigate('/home')
+    toast.success("Login success")
   }
 };
 const onFinishFailed = errorInfo => {

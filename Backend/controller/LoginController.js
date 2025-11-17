@@ -1,8 +1,14 @@
 const UserSchema = require("../model/UserSchema")
 
-let Login=async(req,res)=>{ 
+let Login=async(req,res)=>{  
+    let {email,password}=req.body
 
-    let allUserData=await UserSchema.find({})
-    res.send(allUserData)
+
+    let existUser=await UserSchema.findOne({email:email})
+    console.log(existUser);
+    if(existUser){
+        
+        
+    }
 }
 module.exports=Login

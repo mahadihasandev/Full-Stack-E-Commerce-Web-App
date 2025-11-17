@@ -5,19 +5,19 @@ import { useEffect } from 'react';
 
 const Otp = () => {
 let navigate=useNavigate()
-const data=useParams()
+const params=useParams()
 
  useEffect(()=>{
   async function otpData(){
-   let otpInfo=await axios.post('http://localhost:8000/api/v1/auth/otp',{
-      email:data.email,
-      otp:data.otpcode,
+   let otpInfo=await axios.post('http://localhost:8000/api/v1/otp',{
+      email:params.email,
+      otp:params.otpcode,
     })
     
     if(otpInfo.data=="otp match"){
       navigate('/login')
- }else{
-  navigate(`/error/${otpInfo.data.error}`)
+     }else{
+    navigate(`/error/${otpInfo.data.error}`)
  }  
   }
   otpData()
