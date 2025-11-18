@@ -14,6 +14,7 @@ import Error from '../Layouts/Error';
 import ChangePassword from '../Layouts/Changepassword';
 import ForgetPassword from '../Layouts/ForgetPassword';
 import Home from '../Layouts/Home';
+import Category from '../Layouts/Category';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,9 @@ const router = createBrowserRouter(
      <Route path='/error/:error' element={<Error/>}></Route>
      <Route path='/forgetpassword' element={<ForgetPassword/>}></Route>
      <Route path='/changepassword' element={<ChangePassword/>}></Route>
-     <Route path='/home' element={<Home/>}></Route>
+     <Route path='/home' element={<Home/>}>
+        <Route path='category' element={<Category/>}></Route>
+     </Route>
     </>
   )
 );
