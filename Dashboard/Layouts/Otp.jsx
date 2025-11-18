@@ -21,18 +21,13 @@ const params=useParams()
  }  
   }
   otpData()
- 
-  
- 
- },[]
+ }
 )
 
   return (
     <div className='flex flex-col items-center pt-40 bg-[#0c3635] h-screen'>
-     
       <h1 className='text-white font-extrabold text-5xl'>Please Wait</h1>
-
-
+      
     {/* <Flex gap="middle" align="flex-center" justify='flex-center' vertical>
       <h1 className='text-white text-center font-extrabold'>OTP</h1>
       <Input.OTP

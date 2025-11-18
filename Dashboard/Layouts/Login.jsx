@@ -8,29 +8,26 @@ function Login() {
 let navigate=useNavigate()
 
   const onFinish =async values => {
-
-    
-  let data=await axios.post("http://localhost:8000/api/v1/login",{
-   
+  let data=await axios.post("http://localhost:8000/api/v1/login",{   
     email:values.email,
     password:values.password
-  },
-  )
-
-  if(data.data.error){
+  },)
+if(!data.data.emailVerified){
+  toast.error('varify your email')
+}else if(data.data.error=='user does not exist'){
     toast.error(data.data.error)
-  }else{
-    navigate('/home')
-    toast.success("Login success")
-  }
-};
+    }else{
+      navigate('/home')
+      toast.success("Login success")
+    }
+  };
 const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo);
+  navigate(`/error/${errorInfo}`)
 };
+
   return (
     <div>
       <div className='flex flex-col pt-48 pr-48 items-center bg-[#0c3635] h-screen'> 
-
     <h1 className='mb-5 ml-24 text-[#ffffff] font-sans'> Dashboard Registration</h1>
     
     <ToastContainer />
@@ -43,8 +40,7 @@ const onFinishFailed = errorInfo => {
     initialValues={{ remember: true }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
-    autoComplete="off"
-    
+    autoComplete="off" 
   >
 
     <Form.Item 
