@@ -21,6 +21,11 @@ const UserSchema=new Schema({
     emailVerified:{
         type:Boolean,
         default:false,
+    },
+    role:{
+        type:String,
+        enum:['user','merchant','admin'],
+        default:'user'
     }
 })
 

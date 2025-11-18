@@ -9,7 +9,12 @@ let Login=async(req,res)=>{
     if(existUser){
          bcrypt.compare(password, existUser.password, function(err, result) {
             if(result){
-                res.send('log in successful')
+                res.send({
+                    username:existUser.username,
+                    email:existUser.email,
+                    emailVerified:existUser.emailVerified,
+                    role:existUser.role
+                })
             }else{
                 res.send('wrong user name or password')
             }
