@@ -17,6 +17,9 @@ import { Menu } from 'antd';
       },
     ],
   },
+   {
+    type: 'divider',
+  },
   {
     key: 'sub2',
     label: 'Category',
@@ -35,9 +38,48 @@ import { Menu } from 'antd';
     label: 'Sub Category',
     icon: <SettingOutlined />,
     children: [
-      { key: '9', label: 'View' },
-      { key: '10', label: 'Add' },
+      { key: '7', label: 'View Subcategory' },
+      { key: '8', label: 'Add Subcategory' },
     ],
+  },
+   {
+    type: 'divider',
+  },
+  {
+    key: 'sub5',
+    label: 'Products',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '9', label: 'View Products' },
+      { key: '10', label: 'Add Products' },
+    ],
+  },
+   {
+    type: 'divider',
+  },
+   {
+    key: 'sub6',
+    label: 'Variant',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '11', label: 'View Variant' },
+      { key: '12', label: 'Add Variant' },
+    ],
+  },
+   {
+    type: 'divider',
+  },
+  {
+    key: 'sub7',
+    label: 'Discount',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '13', label: 'View Discount' },
+      { key: '14', label: 'Add Discount' },
+    ],
+  },
+   {
+    type: 'divider',
   },
   
 ];

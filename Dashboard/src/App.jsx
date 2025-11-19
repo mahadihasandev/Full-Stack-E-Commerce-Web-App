@@ -26,7 +26,7 @@ const router = createBrowserRouter(
      <Route path='/error/:error' element={<Error/>}></Route>
      <Route path='/forgetpassword' element={<ForgetPassword/>}></Route>
      <Route path='/changepassword' element={<ChangePassword/>}></Route>
-     <Route path='/home' element={<Home/>}>
+     <Route path='/dashboard' element={<Home/>}>
         <Route path='viewcategory' element={<ViewCategory/>}></Route>
         <Route path='addcategory' element={<AddCategory/>}></Route>
      </Route>
