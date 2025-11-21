@@ -12,11 +12,14 @@ function Login() {
       email: values.email,
       password: values.password,
     });
+    localStorage.setItem('userinfo',JSON.stringify(data.data))
     if (data.data.error == "user does not exist") {
       toast.error(data.data.error);
     } else if (!data.data.emailVerified) {
       toast.error("varify your email");
-    } else {
+    }else if(data.data.role=='user'){
+        toast.error('Please Upgrade to merchant to login')
+    }else {
       navigate("/home");
       toast.success("Login success");
     }

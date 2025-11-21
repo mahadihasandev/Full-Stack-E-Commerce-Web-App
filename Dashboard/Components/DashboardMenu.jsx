@@ -1,8 +1,12 @@
 import React from 'react'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
+let userinfo=JSON.parse(localStorage.getItem('userinfo'))
+
  const items = [
-  {
+  userinfo.role!='merchant'&&{
     key: 'sub1',
     label: 'Admin',
     icon: <MailOutlined />,
@@ -25,8 +29,8 @@ import { Menu } from 'antd';
     label: 'Category',
     icon: <AppstoreOutlined />,
     children: [
-      { key: '5', label: 'View Category' },
-      { key: '6', label: 'Add Category' },
+      { key: '/dashboard/viewcategory', label: 'View Category' },
+      { key: '/dashboard/addcategory', label: 'Add Category' },
     
     ],
   },
@@ -69,7 +73,7 @@ import { Menu } from 'antd';
    {
     type: 'divider',
   },
-  {
+  userinfo.role!='merchant'&&{
     key: 'sub7',
     label: 'Discount',
     icon: <SettingOutlined />,
@@ -81,13 +85,14 @@ import { Menu } from 'antd';
    {
     type: 'divider',
   },
-  
 ];
 
-function DashboardMenu() {
 
+function DashboardMenu() {
+  let navigate=useNavigate()
+  
     const onClick = e => {
-    console.log('click ', e);
+    navigate(e.key);
   };
 
   return (
