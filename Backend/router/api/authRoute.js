@@ -8,10 +8,10 @@ const ForgetPassword=require('../../controller/ForgetPasswordController')
 const changePasswordController = require('../../controller/ChangePasswordController')
 
 
-_.use('/otp',Otp)
-_.use("/registration",secureApi,RegistrationController)
-_.use("/login",LoginController)
-_.use("/forgetpassword",ForgetPassword)
-_.use("/changepassword",changePasswordController)
+_.post('/otp',Otp)
+_.post("/registration",secureApi,RegistrationController)
+_.post("/login",LoginController)
+_.post("/forgetpassword",ForgetPassword)
+_.post("/changepassword",changePasswordController)
 
 module.exports=_

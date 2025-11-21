@@ -1,6 +1,6 @@
 const express = require('express')
 const _= express.Router()
-const Auth=require('./api/authRoute')
+const Auth=require('./api')
 const Api=process.env.API_BASE_URL
 
 _.use(Api,Auth)
