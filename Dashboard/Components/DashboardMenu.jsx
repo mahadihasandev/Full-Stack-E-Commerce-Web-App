@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 let userinfo=JSON.parse(localStorage.getItem('userinfo'))
 
  const items = [
-  userinfo.role!='merchant'&&{
-    key: 'sub1',
+  userinfo.role!='merchant'&&{key: 'sub1',
     label: 'Admin',
     icon: <MailOutlined />,
     children: [

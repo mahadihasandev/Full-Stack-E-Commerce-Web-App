@@ -5,3 +5,5 @@ const ProductRoute=require('./ProductRoute')
 
 _.use('/auth',AuthRoute)
 _.use('/product',ProductRoute)
+
+module.exports=_

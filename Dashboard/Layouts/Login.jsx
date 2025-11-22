@@ -8,10 +8,12 @@ function Login() {
   let navigate = useNavigate();
 
   const onFinish = async (values) => {
-    let data = await axios.post("http://localhost:8000/api/v1/login", {
+    let data = await axios.post("http://localhost:8000/api/v1/auth/login", {
       email: values.email,
       password: values.password,
     });
+    console.log(data.data);
+    
     localStorage.setItem('userinfo',JSON.stringify(data.data))
     if (data.data.error == "user does not exist") {
       toast.error(data.data.error);
@@ -20,7 +22,7 @@ function Login() {
     }else if(data.data.role=='user'){
         toast.error('Please Upgrade to merchant to login')
     }else {
-      navigate("/home");
+      navigate("/dashboard");
       toast.success("Login success");
     }
   };
