@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Registration from '../Layouts/Registration'
+import Registration from './Layouts/Registration'
 
 import {
   createRoutesFromElements,
@@ -8,14 +8,14 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Otp from '../Layouts/Otp';
-import Login from '../Layouts/Login';
-import Error from '../Layouts/Error';
-import ChangePassword from '../Layouts/Changepassword';
-import ForgetPassword from '../Layouts/ForgetPassword';
-import Home from '../Layouts/Home';
-import ViewCategory from '../Layouts/ViewCategory';
-import AddCategory from '../Layouts/AddCategory';
+import Otp from './Layouts/Otp';
+import Login from './Layouts/Login';
+import Error from './Layouts/Error';
+import ChangePassword from './Layouts/Changepassword';
+import ForgetPassword from './Layouts/ForgetPassword';
+import Home from './Layouts/Home';
+import ViewCategory from './Layouts/ViewCategory';
+import AddCategory from './Layouts/AddCategory';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -4,7 +4,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Navigate } from 'react-router-dom';
 
+
 function AddCategory() {
+
+
+  
   const onFinish = async (values) => {
     let data = await axios.post("http://localhost:8000/api/v1/auth/login", {
       email: values.email,
