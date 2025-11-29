@@ -98,11 +98,12 @@ function DashboardMenu() {
     <div>
         <Menu
       onClick={onClick}
-      style={{ width: 256 }}
+      style={{ width: 356,fontSize:"20px"}}
       defaultSelectedKeys={['1']}
       defaultOpenKeys={['sub1']}
       mode="inline"
       items={items}
+      
     />
     </div>
   )

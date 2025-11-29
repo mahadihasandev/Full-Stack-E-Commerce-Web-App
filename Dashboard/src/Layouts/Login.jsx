@@ -3,17 +3,20 @@ import { ToastContainer, toast } from "react-toastify";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authInfo } from "../Slices/AuthSlices";
 
 function Login() {
   let navigate = useNavigate();
+  let dispatch=useDispatch()
 
   const onFinish = async (values) => {
     let data = await axios.post("http://localhost:8000/api/v1/auth/login", {
       email: values.email,
       password: values.password,
     });
-    console.log(data.data);
-    
+
+    dispatch(authInfo(data.data))
     localStorage.setItem('userinfo',JSON.stringify(data.data))
     if (data.data.error == "user does not exist") {
       toast.error(data.data.error);

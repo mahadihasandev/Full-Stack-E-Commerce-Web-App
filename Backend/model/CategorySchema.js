@@ -2,17 +2,17 @@ const mongoose=require('mongoose')
 
 const {Schema}=mongoose
 
-let CategorySchema=Schema({
+const CategorySchema=new Schema({
     name:{
         type:String,
         require:true,
         unique:true,
     },
     ownerId:{
-        type:mongoose.Types.ObjectId,
-        Ref:'userinfo',
-        require:true,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'userinfo',
+        
     }
 })
 
-module.exports=mongoose.model('category', CategorySchema);
+module.exports=mongoose.model('category',CategorySchema);
