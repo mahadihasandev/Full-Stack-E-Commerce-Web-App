@@ -17,7 +17,10 @@ function Login() {
     });
 
     dispatch(authInfo(data.data))
+    console.log(data.data);
+    
     localStorage.setItem('userinfo',JSON.stringify(data.data))
+    
     if (data.data.error == "user does not exist") {
       toast.error(data.data.error);
     } else if (!data.data.emailVerified) {

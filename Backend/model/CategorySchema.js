@@ -11,7 +11,6 @@ const CategorySchema=new Schema({
     ownerId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'userinfo',
-        
     }
 })
 

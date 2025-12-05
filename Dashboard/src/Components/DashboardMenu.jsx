@@ -1,12 +1,12 @@
-import React from 'react'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import {  ToastContainer } from 'react-toastify';
 
 let userinfo=JSON.parse(localStorage.getItem('userinfo'))
 
  const items = [
-  userinfo.role!='merchant'&&{key: 'sub1',
+  userinfo&&userinfo.role!='merchant'&&{key: 'sub1',
     label: 'Admin',
     icon: <MailOutlined />,
     children: [
@@ -72,7 +72,7 @@ let userinfo=JSON.parse(localStorage.getItem('userinfo'))
    {
     type: 'divider',
   },
-  userinfo.role!='merchant'&&{
+  userinfo&&userinfo.role!='merchant'&&{
     key: 'sub7',
     label: 'Discount',
     icon: <SettingOutlined />,
@@ -88,7 +88,9 @@ let userinfo=JSON.parse(localStorage.getItem('userinfo'))
 
 
 function DashboardMenu() {
+
   let navigate=useNavigate()
+
   
     const onClick = e => {
     navigate(e.key);
@@ -105,6 +107,18 @@ function DashboardMenu() {
       items={items}
       
     />
+         <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+          theme="light"
+        />
     </div>
   )
 }

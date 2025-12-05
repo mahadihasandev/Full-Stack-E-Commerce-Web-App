@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Input } from "antd";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -9,34 +9,22 @@ import { useSelector } from 'react-redux';
 function AddCategory() {
 
   const userData = useSelector((state) => state.activeUser);
-  console.log(userData.value.id);
   
   const onFinish = async (values) => {
-    
-    
     let data = await axios.post("http://localhost:8000/api/v1/product/addcategory", {
       name: values.category,
       ownerId:userData.value.id,
     });
-    
-    localStorage.setItem('userinfo',JSON.stringify(data.data))
-    if (data.data.error == "user does not exist") {
-      toast.error(data.data.error);
-    } else if (!data.data.emailVerified) {
-      toast.error("varify your email");
-    }else if(data.data.role=='user'){
-        toast.error('Please Upgrade to merchant to login')
-    }else {
-      
-      toast.success("Login success");
+    if(data){
+      toast.success('category created')
     }
+   
   };
   const onFinishFailed = (errorInfo) => {
      Navigate(`/error/${errorInfo}`);
   };
   return (
     <div className='mt-20'>
-
       <Form
           name="basic"
           labelCol={{ span: 7 }}
@@ -66,6 +54,19 @@ function AddCategory() {
             </Button>
           </Form.Item>
         </Form>
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+          />
     </div>
   )
 }
