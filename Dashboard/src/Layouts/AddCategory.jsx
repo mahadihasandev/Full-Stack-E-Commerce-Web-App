@@ -15,8 +15,10 @@ function AddCategory() {
       name: values.category,
       ownerId:userData.value.id,
     });
-    if(data){
-      toast.success('category created')
+    if(data.data.success=="Category has been Created"){
+      toast.success(data.data.success)
+    }else if(data.data.error=="Category Already Exist"){
+      toast.error(data.data.error)
     }
    
   };
