@@ -1,32 +1,78 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import axios from "axios";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function AddSubCategory() {
-    const userData = useSelector((state) => state.activeUser);
-  
+  const userData = useSelector((state) => state.activeUser);
+  let [viewCategorys,setViewCategorys]=useState([])
+  let [categoryId,setCategoryId]=useState('')
+
+console.log(viewCategorys);
+
   const onFinish = async (values) => {
-    let data = await axios.post("http://localhost:8000/api/v1/product/addsubcategory", {
-      name: values.subcategory,
-      ownerId:userData.value.id,
-     
-    });
-    if(data.data.success=="SubCategory has been Created"){
-      toast.success(data.data.success)
-    }else if(data.data.error=="Category Already Exist"){
-      toast.error(data.data.error)
+    console.log(values);
+    
+    let data = await axios.post(
+      "http://localhost:8000/api/v1/product/addsubcategory",
+      {
+        name: values.subcategory,
+        ownerId: userData.value.id,
+        categoryId:categoryId,
+      }
+    );
+    if (data.data.success == "SubCategory has been Created") {
+      toast.success(data.data.success);
+    } else if (data.data.error == "SubCategory Already Exist") {
+      toast.error(data.data.error);
     }
-   
   };
+
   const onFinishFailed = (errorInfo) => {
-     Navigate(`/error/${errorInfo}`);
+    Navigate(`/error/${errorInfo}`);
   };
+
+  const onChange = (value) => {
+    setCategoryId(value);
+  };
+
+  const onSearch = (value) => {
+    console.log("search:", value);
+  };
+
+useEffect(()=>{
+  let viewCategory=async ()=>{
+    let viewCategoryData=await axios.get('http://localhost:8000/api/v1/product/viewcategory')
+    let arr=[] 
+    viewCategoryData.data.map((item)=>{
+      arr.push(
+        {
+              value: item._id,
+              label: item.name,
+            }
+      )
+    })  
+    setViewCategorys(arr)
+  }
+  viewCategory()
+},[])
+
   return (
     <div>
-         <div className='mt-20'>
-      <Form
+      <div className="mt-20">
+        <Select
+          showSearch={{ optionFilterProp: "label", onSearch }}
+          placeholder="Select Category"
+          onChange={onChange}
+          style={{ width: 506,marginLeft:"120px",marginBottom:"20px" }}
+          options={
+            viewCategorys
+          }
+        />
+        <Form
           name="basic"
           labelCol={{ span: 7 }}
           wrapperCol={{ span: 17 }}
@@ -39,7 +85,7 @@ function AddSubCategory() {
           <Form.Item
             label={
               <span style={{ color: "#ffffff", paddingRight: "25px" }}>
-               Add Subcategory
+                Add Subcategory
               </span>
             }
             name="subcategory"
@@ -48,7 +94,6 @@ function AddSubCategory() {
             <Input style={{ width: "180%", padding: "10px" }} />
           </Form.Item>
 
-
           <Form.Item label={null}>
             <Button type="primary" htmlType="submit">
               Add
@@ -56,21 +101,21 @@ function AddSubCategory() {
           </Form.Item>
         </Form>
         <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default AddSubCategory
+export default AddSubCategory;

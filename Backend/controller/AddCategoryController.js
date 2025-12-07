@@ -3,7 +3,6 @@ let CategorySchema = require("../model/CategorySchema");
 
 let AddCategoryController=async(req,res)=>{
     let {name,ownerId}=req.body
-    console.log(req.body);
    
 let existCategory=await CategorySchema.findOne({name:name})
 if(existCategory){

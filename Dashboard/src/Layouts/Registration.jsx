@@ -2,6 +2,7 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 function Registration() {
@@ -82,6 +83,8 @@ const onFinishFailed = errorInfo => {
         Submit
       </Button>
     </Form.Item>
+     <p className='ml-32 cursor-pointer'>Already have an account? 
+      <Link to='/login'><span className='text-lg text-blue-500'> Login</span></Link></p>
   </Form>
     </div>
   )
