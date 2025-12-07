@@ -1,13 +1,11 @@
 {
   "scripts": {
-       "start": "nodemon index.js",
-    "server": "nodemon Backend/index.js",
+    "start": "nodemon index.js",
+    "server": "cd Backend && npm start",
     "client": "npm run dev --prefix Dashboard",
     "dev": "concurrently \"npm:server\" \"npm:client\""
-
   },
-  "dependencies": {
-    "dotenv": "^17.2.3",
-    "nodemon": "^3.1.10"
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

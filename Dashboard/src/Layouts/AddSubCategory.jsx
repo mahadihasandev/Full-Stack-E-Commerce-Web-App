@@ -4,17 +4,16 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-
-function AddCategory() {
-
-  const userData = useSelector((state) => state.activeUser);
+function AddSubCategory() {
+    const userData = useSelector((state) => state.activeUser);
   
   const onFinish = async (values) => {
-    let data = await axios.post("http://localhost:8000/api/v1/product/addcategory", {
-      name: values.category,
+    let data = await axios.post("http://localhost:8000/api/v1/product/addsubcategory", {
+      name: values.subcategory,
       ownerId:userData.value.id,
+     
     });
-    if(data.data.success=="Category has been Created"){
+    if(data.data.success=="SubCategory has been Created"){
       toast.success(data.data.success)
     }else if(data.data.error=="Category Already Exist"){
       toast.error(data.data.error)
@@ -25,7 +24,8 @@ function AddCategory() {
      Navigate(`/error/${errorInfo}`);
   };
   return (
-    <div className='mt-20'>
+    <div>
+         <div className='mt-20'>
       <Form
           name="basic"
           labelCol={{ span: 7 }}
@@ -39,10 +39,10 @@ function AddCategory() {
           <Form.Item
             label={
               <span style={{ color: "#ffffff", paddingRight: "25px" }}>
-               Add Category
+               Add Subcategory
               </span>
             }
-            name="category"
+            name="subcategory"
             rules={[{ required: true, message: "Please input your email!" }]}
           >
             <Input style={{ width: "180%", padding: "10px" }} />
@@ -69,7 +69,8 @@ function AddCategory() {
             transition={Bounce}
           />
     </div>
+    </div>
   )
 }
 
-export default AddCategory
+export default AddSubCategory

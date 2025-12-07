@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 import { Outlet, useNavigate } from 'react-router-dom';
 import DashboardMenu from '../Components/DashboardMenu';
 import { useSelector } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
+
 
 function Home() {
     const userData=useSelector((state)=>(state.activeUser.value))
@@ -11,8 +11,6 @@ function Home() {
  useEffect(()=>{
  if(!userData){
     navigate('/login')
-  }else{
-    toast.success("Welcome to Dashboard")
   }
  },[])
   return (
@@ -25,7 +23,7 @@ function Home() {
       <Outlet/>
       </Col>
     </Row>
-    <ToastContainer/>
+   
     </div>
   )
 }

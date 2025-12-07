@@ -1,7 +1,6 @@
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import {  ToastContainer } from 'react-toastify';
 
 let userinfo=JSON.parse(localStorage.getItem('userinfo'))
 
@@ -41,8 +40,8 @@ let userinfo=JSON.parse(localStorage.getItem('userinfo'))
     label: 'Sub Category',
     icon: <SettingOutlined />,
     children: [
-      { key: '7', label: 'View Subcategory' },
-      { key: '8', label: 'Add Subcategory' },
+      { key: '/dashboard/viewsubcategory', label: 'View Subcategory' },
+      { key: '/dashboard/addsubcategory', label: 'Add Subcategory' },
     ],
   },
    {
@@ -86,16 +85,11 @@ let userinfo=JSON.parse(localStorage.getItem('userinfo'))
   },
 ];
 
-
 function DashboardMenu() {
-
   let navigate=useNavigate()
-
-  
     const onClick = e => {
     navigate(e.key);
   };
-
   return (
     <div>
         <Menu
@@ -104,21 +98,8 @@ function DashboardMenu() {
       defaultSelectedKeys={['1']}
       defaultOpenKeys={['sub1']}
       mode="inline"
-      items={items}
-      
-    />
-         <ToastContainer
-          position="top-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover={false}
-          theme="light"
-        />
+      items={items} 
+    />   
     </div>
   )
 }

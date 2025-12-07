@@ -5,13 +5,13 @@ const {Schema}=mongoose
 const CategorySchema=new Schema({
     name:{
         type:String,
-        require:true,
+        required:true,
         unique:true,
     },
     ownerId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'userinfo',
-    }
+    },
 })
 
-module.exports=mongoose.model('category',CategorySchema);
+module.exports=mongoose.model('Category',CategorySchema);
