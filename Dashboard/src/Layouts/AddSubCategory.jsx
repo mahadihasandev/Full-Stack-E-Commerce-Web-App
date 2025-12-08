@@ -10,12 +10,8 @@ function AddSubCategory() {
   const userData = useSelector((state) => state.activeUser);
   let [viewCategorys,setViewCategorys]=useState([])
   let [categoryId,setCategoryId]=useState('')
-
-console.log(viewCategorys);
-
+  
   const onFinish = async (values) => {
-    console.log(values);
-    
     let data = await axios.post(
       "http://localhost:8000/api/v1/product/addsubcategory",
       {

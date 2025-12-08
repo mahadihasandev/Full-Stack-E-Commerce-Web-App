@@ -12,6 +12,7 @@ const CategorySchema=new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'userinfo',
     },
+    
 })
 
 module.exports=mongoose.model('Category',CategorySchema);
