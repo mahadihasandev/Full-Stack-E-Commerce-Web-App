@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-function ViewCategory() {
-let [catViewData,setCatViewData]=useState([])
+function ViewSubCategory() {
+    let [catViewData,setCatViewData]=useState([])
 
   const columns = [
   {
@@ -49,7 +49,7 @@ const userData = useSelector((state) => state.activeUser.value);
 
   useEffect(()=>{
    async function viewCatData(){
-    let viewData=await axios.get('http://localhost:8000/api/v1/product/viewcategory')
+    let viewData=await axios.get('http://localhost:8000/api/v1/product/viewsubcategory')
     let arr=[]
     
     viewData.data.map((item)=>{
@@ -66,10 +66,11 @@ const userData = useSelector((state) => state.activeUser.value);
     viewCatData()
   },[userData.role])
   return (
-    <div className='mt-10'>
+   <div className='mt-10'>
+    <h1 className='text-center'>Subcategory List</h1>
         <Table columns={columns} dataSource={catViewData} />
     </div>
   )
 }
 
-export default ViewCategory
+export default ViewSubCategory
