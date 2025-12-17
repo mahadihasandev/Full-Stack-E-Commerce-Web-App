@@ -67,6 +67,7 @@ const userData = useSelector((state) => state.activeUser.value);
   },[userData.role])
   return (
     <div className='mt-10'>
+      <h1 className='text-center text-5xl mr-64 mb-5 font-sans font-semibold'>Category List</h1>
         <Table columns={columns} dataSource={catViewData} />
     </div>
   )

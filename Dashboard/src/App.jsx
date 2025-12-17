@@ -18,6 +18,8 @@ import ViewCategory from './Layouts/ViewCategory';
 import AddCategory from './Layouts/AddCategory';
 import AddSubCategory from './Layouts/AddSubCategory';
 import ViewSubCategory from './Layouts/ViewSubCategory';
+import AddProduct from './Layouts/AddProduct';
+import ViewProduct from './Layouts/ViewProduct';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +35,8 @@ const router = createBrowserRouter(
         <Route path='viewsubcategory' element={<ViewSubCategory/>}></Route>
         <Route path='addcategory' element={<AddCategory/>}></Route>
         <Route path='addsubcategory' element={<AddSubCategory/>}></Route>
+        <Route path='addproduct' element={<AddProduct/>}></Route>
+        <Route path='viewproduct' element={<ViewProduct/>}></Route>
      </Route>
     </>
   )

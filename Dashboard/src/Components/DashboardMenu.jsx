@@ -52,8 +52,8 @@ let userinfo=JSON.parse(localStorage.getItem('userinfo'))
     label: 'Products',
     icon: <SettingOutlined />,
     children: [
-      { key: '9', label: 'View Products' },
-      { key: '10', label: 'Add Products' },
+      { key: '/dashboard/viewproduct', label: 'View Products' },
+      { key: '/dashboard/addproduct', label: 'Add Products' },
     ],
   },
    {

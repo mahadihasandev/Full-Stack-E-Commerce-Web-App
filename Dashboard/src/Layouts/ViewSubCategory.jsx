@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 
 function ViewSubCategory() {
     let [catViewData,setCatViewData]=useState([])
+    console.log(catViewData);
+    
 
   const columns = [
   {
@@ -12,6 +14,11 @@ function ViewSubCategory() {
     dataIndex: 'name',
     key: 'name',
    
+  },
+  {
+    title: 'Category',
+    dataIndex: 'category',
+    key: 'category',
   },
   {
     title: 'Owner Role',
@@ -50,24 +57,26 @@ const userData = useSelector((state) => state.activeUser.value);
   useEffect(()=>{
    async function viewCatData(){
     let viewData=await axios.get('http://localhost:8000/api/v1/product/viewsubcategory')
+    console.log(viewData);
+    
     let arr=[]
     
     viewData.data.map((item)=>{
       arr.push({
         key:item._id,
         name:item.name,
+        category:item.categoryId.name,
         tags:[userData.role]
       })
       
     })
-    setCatViewData(arr);
-    
+    setCatViewData(arr);    
     }
     viewCatData()
   },[userData.role])
   return (
    <div className='mt-10'>
-    <h1 className='text-center'>Subcategory List</h1>
+    <h1 className='text-center text-5xl mr-64 mb-5 font-sans font-semibold'>Subcategory List</h1>
         <Table columns={columns} dataSource={catViewData} />
     </div>
   )
