@@ -1,19 +1,37 @@
 import { Button, Form, Input } from 'antd';
-import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import slugify from 'react-slugify';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { useQuill } from 'react-quilljs';
+import 'quill/dist/quill.snow.css';
+import axios from 'axios';
 
 function AddProduct() {
   const [slug,setSlug]=useState('')
+   const [des,setDes]=useState('')
+console.log(des);
+
+
+   const { quill, quillRef } = useQuill();
+
+  useEffect(()=>{
+    if(quill){
+      quill.on('text-change',function(){
+        setDes(quill.root.innerHTML);
+        
+    })
+    }
+    
+  },[quill])
 
   const onFinish =async (values) => {
-  console.log(values);
+  
+  
   
   let data=await axios.post('http://localhost:8000/api/v1/product/addproduct',
     {
      name:values.productname,
-     description:values.description,
+     description:des,
      image:values.image,
      saleprice:values.saleprice,
      regularprice:values.regularprice,
@@ -21,7 +39,9 @@ function AddProduct() {
     }
   )
    if(data.data.success=="Product has been Created"){
-        toast.success(data.data.success)
+        toast.success("Product has been Created")
+        values={}
+        console.log(values);
       }else if(data.data.error=="Product Already Exist"){
         toast.error(data.data.error)
       }
@@ -29,23 +49,11 @@ function AddProduct() {
 }
 
 const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo);
+  console.log('frontend failed', errorInfo);
 };
   return (
     <div className='mt-10'>
-      <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
+      
       <Form
       name="basic"
       labelCol={{ span: 8 }}
@@ -64,13 +72,12 @@ const onFinishFailed = errorInfo => {
       <Input onChange={(e)=>setSlug(e.target.value)}/>
     </Form.Item>
 
-    <Form.Item
-      label="Description"
-      name="description"
-      rules={[{ required: true, message: 'Please input your username!' }]}
-    >
-      <Input />
-    </Form.Item>
+      <label className='ml-28' htmlFor="description">Description : 
+      <div style={{ width: 400, height: 100, marginLeft:200,marginBottom:120 }}>
+      <div ref={quillRef} />
+    </div>
+      </label>
+     
 
     <Form.Item
       label="Image"
@@ -107,6 +114,19 @@ const onFinishFailed = errorInfo => {
       </Button>
     </Form.Item>
   </Form>
+
+  <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={true}
+            rtl={false}
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+          />
     </div>
   )
 }
