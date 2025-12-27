@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ToastContainer, toast } from "react-toastify";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
@@ -17,7 +17,7 @@ function Login() {
     });
 
     dispatch(authInfo(data.data))
-    console.log(data.data);
+    
     
     localStorage.setItem('userinfo',JSON.stringify(data.data))
     

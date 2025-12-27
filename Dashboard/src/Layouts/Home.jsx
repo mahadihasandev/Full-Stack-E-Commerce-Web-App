@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 import { Outlet, useNavigate } from 'react-router-dom';
 import DashboardMenu from '../Components/DashboardMenu';
 import { useSelector } from 'react-redux';
-import { Bounce, ToastContainer } from 'react-toastify';
+
 
 
 function Home() {
@@ -12,6 +12,7 @@ function Home() {
  
  if(!userData){
     navigate('/login')
+    
   }
 
   return (
@@ -24,18 +25,7 @@ function Home() {
       <Outlet/>
       </Col>
     </Row>
-     <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={true}
-            rtl={false}
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
+     
    
     </div>
   )

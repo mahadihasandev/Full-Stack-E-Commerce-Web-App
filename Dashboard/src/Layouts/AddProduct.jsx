@@ -1,15 +1,18 @@
-import { Button, Form, Input } from 'antd';
+import { Button, ConfigProvider, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import slugify from 'react-slugify';
-import { Bounce, toast, ToastContainer } from 'react-toastify';
+import {toast, ToastContainer } from 'react-toastify';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import axios from 'axios';
+import { CloudUpload } from 'lucide-react';
 
 function AddProduct() {
   const [slug,setSlug]=useState('')
    const [des,setDes]=useState('')
-console.log(des);
+   const [image,setImage]=useState('')
+   const [form] = Form.useForm();
+
 
 
    const { quill, quillRef } = useQuill();
@@ -32,33 +35,53 @@ console.log(des);
     {
      name:values.productname,
      description:des,
-     image:values.image,
+     productImg:image,
      saleprice:values.saleprice,
      regularprice:values.regularprice,
      slug:slug,
+    },
+    {
+      headers:{"Content-Type":"multipart/form-data"}
     }
   )
-   if(data.data.success=="Product has been Created"){
-        toast.success("Product has been Created")
-        values={}
-        console.log(values);
-      }else if(data.data.error=="Product Already Exist"){
-        toast.error(data.data.error)
+   if(data.data.success=="Product created successfully"){
+        toast.success("Product created successfully")
+        quill.setText('');
+        form.resetFields();
+        setSlug('');
+        
+      }else if(data.data.error=="Product already exist"){
+        toast.error('Product already exist')
       }
   
 }
 
 const onFinishFailed = errorInfo => {
-  console.log('frontend failed', errorInfo);
+  toast.error(errorInfo)
 };
+
+let handleImage=(e)=>{
+  setImage(e.target.files[0]);
+  
+}
   return (
-    <div className='mt-10'>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontSize: 18,
+          fontFamily: "'Poppins', sans-serif",
+        
+        },
+      }}
+    >
+    <div className='mt-10 '>
       
       <Form
+      form={form}
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
-      style={{ maxWidth: 600 }}
+      style={{ maxWidth: 800 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
@@ -72,19 +95,26 @@ const onFinishFailed = errorInfo => {
       <Input onChange={(e)=>setSlug(e.target.value)}/>
     </Form.Item>
 
-      <label className='ml-28' htmlFor="description">Description : 
-      <div style={{ width: 400, height: 100, marginLeft:200,marginBottom:120 }}>
-      <div ref={quillRef} />
-    </div>
-      </label>
+      <div className="flex items-start ml-40 mt-10">
+  <label 
+    className="w-[120px] pt-0.5" 
+    htmlFor="description"
+  >
+    Description :
+  </label>
+
+  <div style={{ width: 530, height: 100, marginBottom: 120 }}>
+    <div ref={quillRef} />
+  </div>
+</div>
      
 
     <Form.Item
       label="Image"
       name="image"
-      rules={[{ required: true, message: 'Please input your username!' }]}
+      rules={[{ required: true, message: 'Please input image!' }]}
     >
-      <Input type='file'/>
+      <Input prefix={<CloudUpload className="text-gray-400 mr-2" />} onChange={handleImage} type='file'/>
     </Form.Item>
 
     <Form.Item
@@ -103,8 +133,8 @@ const onFinishFailed = errorInfo => {
       <Input />
     </Form.Item>
 
-    <label className='ml-30' htmlFor="slug">Slug : <span/>
-      <input className='border border-gray-300 rounded-md px-4 w-[67%] py-1 ml-10 mb-5' id='slug' defaultValue={slugify(slug)} type='text' disabled/>
+    <label className='ml-[22%]' htmlFor="slug">Slug : <span/>
+      <input className='border border-gray-300 rounded-md px-4 w-[66%] py-1 ml-10 mb-5' id='slug' defaultValue={slugify(slug)} type='text' disabled/>
     </label>
       
 
@@ -113,21 +143,24 @@ const onFinishFailed = errorInfo => {
         Submit
       </Button>
     </Form.Item>
-  </Form>
-
-  <ToastContainer
-            position="top-right"
+     <ToastContainer
+            position="bottom-center"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
-            closeOnClick={true}
+            closeOnClick={false}
             rtl={false}
+            pauseOnFocusLoss={false}
             draggable
-            pauseOnHover
+            pauseOnHover={false}
             theme="light"
-            transition={Bounce}
+            
           />
+  </Form>
+
+  
     </div>
+    </ConfigProvider>
   )
 }
 

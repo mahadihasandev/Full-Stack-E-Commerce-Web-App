@@ -13,7 +13,7 @@ const ProductSchema=new Schema({
     },
     image:{
         type:String,
-        required:true,
+        
     },
      saleprice:{
         type:Number,

@@ -8,7 +8,12 @@ let AddProductController=async (req,res)=>{
         res.send({error:'Product already exist'})
     }else{
         let product=new ProductSchema({
-            name,description,image,saleprice,regularprice,slug 
+            name,
+            description,
+            image:`/uploads/${req.file.filename}`,
+            saleprice,
+            regularprice,
+            slug 
         })
 
         product.save()

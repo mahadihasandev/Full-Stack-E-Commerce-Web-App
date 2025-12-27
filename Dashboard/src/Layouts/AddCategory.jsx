@@ -54,8 +54,7 @@ function AddCategory() {
               Add
             </Button>
           </Form.Item>
-        </Form>
-        <ToastContainer
+           <ToastContainer
             position="top-right"
             autoClose={5000}
             hideProgressBar={false}
@@ -68,6 +67,8 @@ function AddCategory() {
             theme="light"
             transition={Bounce}
           />
+        </Form>
+       
     </div>
   )
 }

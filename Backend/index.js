@@ -5,11 +5,12 @@ const app = express()
 const port = 8000
 const router=require('./router')
 let mongoDBConfig=require('./dbConfig/mongoDBConfig')
-
+const path=require('path')
 
 app.use(cors())
 app.use(express.json())
 app.use(router)
+app.use('/uploads',express.static(path.join(__dirname,"uploads")))
 
 mongoDBConfig()
 app.listen(port, () => {
