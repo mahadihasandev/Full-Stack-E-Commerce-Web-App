@@ -7,6 +7,9 @@ const addSubCategoryController=require('../../controller/AddsubCategoryControlle
 const ViewCategoryController = require('../../controller/ViewCategoryController')
 const ViewSubCategoryController = require('../../controller/ViewSubCategoryController')
 const AddProductController = require('../../controller/AddProductController')
+const AddVariantController = require('../../controller/AddVariantController')
+const ViewProductController = require('../../controller/ViewProductController')
+const ViewVariantController = require('../../controller/ViewVariantController')
 
 
 const storage = multer.diskStorage({
@@ -30,5 +33,8 @@ _.post('/addsubcategory',addSubCategoryController)
 _.post('/addproduct',upload.single('productImg'),AddProductController)
 _.get('/viewcategory',ViewCategoryController)
 _.get('/viewsubcategory',ViewSubCategoryController)
+_.post('/addvariant',upload.single('productImg'),AddVariantController)
+_.get('/viewproduct',ViewProductController)
+_.get('/viewvariant',ViewVariantController)
 
 module.exports=_

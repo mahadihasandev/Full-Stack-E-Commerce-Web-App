@@ -3,18 +3,18 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
-function ViewProduct() {
+function ViewVariant() {
   const [ productData,setProductData]=useState([])
 
 useEffect(()=>{
   let ProductData=async()=>{
-    let data=await axios.get('http://localhost:8000/api/v1/product/viewproduct')
+    let data=await axios.get('http://localhost:8000/api/v1/product/viewvariant')
     
     
     let mapData=data.data.map((item,index)=>{
       return{
         id:index+1,
-        name:item.name,
+        name:item.variantname,
         image:item.image,
         regular:item.regularprice,
         saleprice:item.saleprice,
@@ -77,4 +77,4 @@ const columns = [
   )
 }
 
-export default ViewProduct
+export default ViewVariant

@@ -63,6 +63,16 @@ function DashboardMenu() {
       ],
     },
     { type: 'divider' },
+    {
+      key: 'sub6',
+      label: 'Variant',
+      icon: <SettingOutlined />,
+      children: [
+        { key: '/dashboard/viewvariant', label: 'View Variant' },
+        { key: '/dashboard/addvariant', label: 'Add Variant' },
+      ],
+    },
+    { type: 'divider' },
     userinfo?.role !== 'merchant' && {
       key: 'sub7',
       label: 'Discount',
