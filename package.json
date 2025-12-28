@@ -3,7 +3,8 @@
     "start": "nodemon index.js",
     "server": "cd Backend && npm start",
     "client": "npm run dev --prefix Dashboard",
-    "dev": "concurrently \"npm:server\" \"npm:client\""
+    "frontend":"npm run dev --prefix Frontend",
+    "dev": "concurrently \"npm:server\" \"npm:client\" \"npm:frontend\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
