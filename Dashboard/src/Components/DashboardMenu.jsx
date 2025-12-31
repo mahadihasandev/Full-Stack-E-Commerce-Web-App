@@ -73,8 +73,18 @@ function DashboardMenu() {
       ],
     },
     { type: 'divider' },
-    userinfo?.role !== 'merchant' && {
+    {
       key: 'sub7',
+      label: 'Banner',
+      icon: <SettingOutlined />,
+      children: [
+        { key: '/dashboard/viewbanner', label: 'View Banner' },
+        { key: '/dashboard/addbannar', label: 'Add Banner' },
+      ],
+    },
+    { type: 'divider' },
+    userinfo?.role !== 'merchant' && {
+      key: 'sub8',
       label: 'Discount',
       icon: <SettingOutlined />,
       children: [

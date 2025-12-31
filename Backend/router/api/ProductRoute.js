@@ -10,6 +10,12 @@ const AddProductController = require('../../controller/AddProductController')
 const AddVariantController = require('../../controller/AddVariantController')
 const ViewProductController = require('../../controller/ViewProductController')
 const ViewVariantController = require('../../controller/ViewVariantController')
+const AddBannerController = require('../../controller/AddBannerController')
+const ViewBannerController = require('../../controller/ViewBannerController')
+const DeleteProductController = require('../../controller/DeleteProductController')
+const EditProductController = require('../../controller/EditProductController')
+const DeleteBannerController = require('../../controller/DeleteBannerController')
+
 
 
 const storage = multer.diskStorage({
@@ -23,18 +29,20 @@ const storage = multer.diskStorage({
     
   }
 })
-
 const upload = multer({ storage: storage })
 
-
-
 _.post('/addcategory',AddCategoryController)
-_.post('/addsubcategory',addSubCategoryController)
-_.post('/addproduct',upload.single('productImg'),AddProductController)
 _.get('/viewcategory',ViewCategoryController)
+_.post('/addsubcategory',addSubCategoryController)
 _.get('/viewsubcategory',ViewSubCategoryController)
-_.post('/addvariant',upload.single('productImg'),AddVariantController)
+_.post('/addproduct',upload.single('productImg'),AddProductController)
 _.get('/viewproduct',ViewProductController)
+_.delete('/deleteproduct:item',DeleteProductController)
+_.delete('/deletebanner:item',DeleteBannerController)
+_.post('/editproduct:getId',EditProductController)
+_.post('/addbanner',upload.single('productImg'),AddBannerController)
+_.get('/viewbanner',ViewBannerController)
+_.post('/addvariant',upload.single('productImg'),AddVariantController)
 _.get('/viewvariant',ViewVariantController)
 
 module.exports=_

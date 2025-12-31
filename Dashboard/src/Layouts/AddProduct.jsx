@@ -13,14 +13,12 @@ function AddProduct() {
    const [image,setImage]=useState('')
    const [form] = Form.useForm();
 
-
-
    const { quill, quillRef } = useQuill();
 
   useEffect(()=>{
     if(quill){
       quill.on('text-change',function(){
-        setDes(quill.root.innerHTML);
+        setDes(quill.root.textContent);
         
     })
     }
