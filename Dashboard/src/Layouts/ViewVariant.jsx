@@ -8,7 +8,7 @@ function ViewVariant() {
 
 useEffect(()=>{
   let ProductData=async()=>{
-    let data=await axios.get('http://localhost:8000/api/v1/product/viewvariant')
+    let data=await axios.get(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/viewvariant`)
     
     
     let mapData=data.data.map((item,index)=>{

@@ -7,11 +7,12 @@ function ViewBanner() {
   const [productData,setProductData]=useState([])
   const [refresh, setRefresh] = useState('');
 
+
 useEffect(()=>{
 
 
   let ProductData=async()=>{
-    let data=await axios.get('http://localhost:8000/api/v1/product/viewbanner')
+    let data=await axios.get(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/viewbanner`)
    let array=[]
     data.data.map((item)=>{
         

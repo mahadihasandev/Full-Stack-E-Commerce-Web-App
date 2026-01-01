@@ -29,7 +29,7 @@ function Addvariant() {
     
   
   
-  let data=await axios.post('http://localhost:8000/api/v1/product/addvariant',
+  let data=await axios.post(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/addvariant`,
     {
      variantname:values.variantname,
      description:des,

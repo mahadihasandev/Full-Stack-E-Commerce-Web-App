@@ -49,7 +49,7 @@ const userData = useSelector((state) => state.activeUser.value);
 
   useEffect(()=>{
    async function viewCatData(){
-    let viewData=await axios.get('http://localhost:8000/api/v1/product/viewcategory')
+    let viewData=await axios.get(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/viewcategory`)
     let arr=[]
     
     viewData.data.map((item)=>{

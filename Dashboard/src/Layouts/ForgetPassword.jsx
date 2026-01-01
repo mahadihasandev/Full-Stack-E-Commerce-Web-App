@@ -7,7 +7,7 @@ function ForgetPassword() {
      const onFinish =async values => {
 
     
-  let data=await axios.post("http://localhost:8000/api/v1/forgetpassword",{
+  let data=await axios.post(`${import.meta.env.VITE_LOCAL_API}/api/v1/forgetpassword`,{
     email:values.email,
   },
   )

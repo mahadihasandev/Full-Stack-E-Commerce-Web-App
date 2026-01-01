@@ -41,7 +41,7 @@ function AddSubCategory() {
 
 useEffect(()=>{
   let viewCategory=async ()=>{
-    let viewCategoryData=await axios.get('http://localhost:8000/api/v1/product/viewcategory')
+    let viewCategoryData=await axios.get(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/viewcategory`)
     let arr=[] 
     viewCategoryData.data.map((item)=>{
       arr.push(

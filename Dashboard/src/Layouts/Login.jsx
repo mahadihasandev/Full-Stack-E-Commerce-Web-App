@@ -11,7 +11,7 @@ function Login() {
   let dispatch=useDispatch()
 
   const onFinish = async (values) => {
-    let data = await axios.post("http://localhost:8000/api/v1/auth/login", {
+    let data = await axios.post(`${import.meta.env.VITE_LOCAL_API}/api/v1/auth/login`, {
       email: values.email,
       password: values.password,
     });

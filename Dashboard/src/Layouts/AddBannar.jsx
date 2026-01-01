@@ -23,7 +23,7 @@ function AddBannar() {
 
   const onFinish = async (values) => {
     let data = await axios.post(
-      "http://localhost:8000/api/v1/product/addbanner",
+      `${import.meta.env.VITE_LOCAL_API}/api/v1/product/addbanner`,
       {
         name: values.productname,
         description: des,
