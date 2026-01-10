@@ -2,42 +2,46 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
+.nav-links {
+  position: relative!important;
+  text-decoration: none;
+  scale: 90%;
+}
 .nav-links:hover{
-  transition: 0.5s;
+  transition: 0.4s ease-in-out;
   color: #007bff!important;
+  scale: 100%;
 }
 
 
 
 .nav-links .dropdown-toggle:hover{
-  transition: 0.5s;
+  transition: 0.4s ease-in-out;
   color: #007bff!important;
+  transition: color 0.4s ease-in-out;
 }
 
-.nav-links {
-  position: relative!important;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+
 
 /* Create the underline using a pseudo-element */
 .nav-links::after {
   content: '';
   position: absolute!important;
-  width: 0;
+  width: 100%;
+  scale: 0%;
   height: 4px;
   bottom: 0;
   left: 0;
   background-color: #007bff; /* Change to your preferred color */
-  transition: width 0.3s ease;
+  transition: 0.4s ease;
    color: #007bff!important;
 }
 
 /* Navbar layouts */
 /* Animation on hover */
 .nav-links:hover::after {
-  width: 100%;
+  scale:100%
+  
 }
 /* Space for the underline */
 .nav-link.nav-links {
@@ -63,9 +67,12 @@
 .search-bar{
   border-radius: 50%;
 }
-
+@theme{
+   --color-royal-blue:#007bff;
+   --font-poppins: Poppins, sans-serif;
+}
 @theme inline {
-
+  
   --radius-sm: calc(var(--radius) - 4px);
 
   --radius-md: calc(var(--radius) - 2px);
@@ -84,6 +91,8 @@
 
   --color-foreground: var(--foreground);
 
+ 
+  
   --color-card: var(--card);
 
   --color-card-foreground: var(--card-foreground);

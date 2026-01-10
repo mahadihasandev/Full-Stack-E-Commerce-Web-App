@@ -1,11 +1,11 @@
 import Banner from '@/layouts/banner'
-import Search from '@/layouts/search'
+import CategoryComponent from '@/layouts/categoryComponent'
 import React from 'react'
 
 function page() {
   return (
     <div>
-      <Search/>
+      <CategoryComponent/> 
       <Banner/>
     </div>
   )

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 function ViewBanner() {
   const [productData,setProductData]=useState([])
   const [refresh, setRefresh] = useState('');
+console.log(import.meta.env.VITE_LOCAL_API);
 
 
 useEffect(()=>{
@@ -31,7 +32,7 @@ useEffect(()=>{
 ,[refresh])
 
 const handleDelete=async(item)=>{ 
- let deleteData=await axios.delete(`http://localhost:8000/api/v1/product/deletebanner${item}`)
+ let deleteData=await axios.delete(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/deletebanner/${item}`)
   setRefresh(deleteData.data)
 }
 
@@ -59,7 +60,7 @@ const columns = [
     title: 'Image',
     dataIndex: 'image',
     key: 'image',
-     render: (text) =><img width='100px' src={`http://localhost:8000${text}`} alt="Image" />,
+     render: (text) =><img width='100px' src={`${text}`} alt="Image" />,
   },
   
   

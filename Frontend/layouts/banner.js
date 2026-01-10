@@ -8,7 +8,6 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function Banner() {
   const [bannerData,setBannerData]=useState([])
-  console.log(bannerData);
   useEffect(()=>{
     async function BannerData() {
       try {
@@ -30,9 +29,8 @@ function Banner() {
         <Carousel>
           {bannerData.map((item) => (
             <Carousel.Item className='' key={item._id }> 
-              <Image
-                
-                src={`http://localhost:8000${item.image}`} 
+              <Image                
+                src={`${item.image}`} 
                 height={400} 
                 width={1200} 
                 alt={item.title || "banner image"}

@@ -15,6 +15,7 @@ const ViewBannerController = require('../../controller/ViewBannerController')
 const DeleteProductController = require('../../controller/DeleteProductController')
 const EditProductController = require('../../controller/EditProductController')
 const DeleteBannerController = require('../../controller/DeleteBannerController')
+const ViewAllSubCatController = require('../../controller/ViewAllSubCatController')
 
 
 
@@ -37,12 +38,13 @@ _.post('/addsubcategory',addSubCategoryController)
 _.get('/viewsubcategory',ViewSubCategoryController)
 _.post('/addproduct',upload.single('productImg'),AddProductController)
 _.get('/viewproduct',ViewProductController)
-_.delete('/deleteproduct:item',DeleteProductController)
-_.delete('/deletebanner:item',DeleteBannerController)
+_.delete('/deleteproduct/:item',DeleteProductController)
+_.delete('/deletebanner/:item',DeleteBannerController)
 _.post('/editproduct:getId',EditProductController)
 _.post('/addbanner',upload.single('productImg'),AddBannerController)
 _.get('/viewbanner',ViewBannerController)
 _.post('/addvariant',upload.single('productImg'),AddVariantController)
 _.get('/viewvariant',ViewVariantController)
+_.get('/viewallsubcategory',ViewAllSubCatController)
 
 module.exports=_

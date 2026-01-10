@@ -43,7 +43,7 @@ useEffect(()=>{
 ,[refresh])
 
 const handleDelete=async(item)=>{ 
- let deleteData=await axios.delete(`http://localhost:8000/api/v1/product/deleteproduct${item}`)
+ let deleteData=await axios.delete(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/deleteproduct${item}`)
   setRefresh(deleteData.data)
 }
 
@@ -60,7 +60,7 @@ setDes(data.description)
 }
 
 let handleUpdate=async()=>{
-await axios.post(`http://localhost:8000/api/v1/product/editproduct${getId}`,
+await axios.post(`${import.meta.env.VITE_LOCAL_API}/api/v1/product/editproduct${getId}`,
     {
      name:names,
      description:des,
@@ -96,7 +96,7 @@ const columns = [
     title: 'Image',
     dataIndex: 'image',
     key: 'image',
-     render: (text) =><img width='100px' src={`http://localhost:8000${text}`} alt="Image" />,
+     render: (text) =><img width='100px' src={`${import.meta.env.VITE_LOCAL_API}${text}`} alt="Image" />,
   },
   {
     title: 'Regular Price',

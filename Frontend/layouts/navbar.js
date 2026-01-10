@@ -17,7 +17,7 @@ function NavbarMenu() {
         <Navbar.Brand href="/">Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto gap-3"> 
+          <Nav className="mx-auto gap-3 z-50"> 
             <Nav.Link className={`${poppins.className} nav-links`} href="/">Home</Nav.Link>
             <Nav.Link className={`${poppins.className} nav-links`} href="/">Link</Nav.Link>
             <Nav.Link className={`${poppins.className} nav-links`} href="/">Link</Nav.Link>
