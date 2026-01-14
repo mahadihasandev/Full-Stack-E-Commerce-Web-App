@@ -6,9 +6,9 @@ import Col from "react-bootstrap/Col";
 
 function Footer() {
   return (
-    <div className="bg-[#007bff]">
+    <div className="bg-black">
       <Container>
-        <Row className="bg-[#007bff] py-5 text-white footer-item">
+        <Row className="bg-black py-5 text-white footer-item">
           <Col >
             <ul className="gap-5">
               <li >Home</li>

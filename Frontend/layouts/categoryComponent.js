@@ -18,10 +18,10 @@ export default async function CategoryComponent() {
             
             <li key={item._id} className="relative group">
              <CategoryButton item={item}/> 
-             <ul  className="absolute hidden group-hover:block z-50 -left-8">
+             <ul  className="absolute hidden group-hover:block z-50 -left-8 mt-1">
              { item.subcategoryList.map(items=>(
                       
-                      <li key={items._id} className='border font-poppins ease-in-out duration-300 bg-gray-50 py-1 px-10 hover:bg-royal-blue hover:text-white hover:scale-110 '>{items.name}</li>
+                      <li key={items._id} className='border font-poppins ease-in-out duration-300 bg-gray-50 py-1 px-10 hover:bg-orange-600 hover:text-white hover:scale-110 '>{items.name}</li>
                      
                      ))}
                     
