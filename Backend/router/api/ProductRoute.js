@@ -16,6 +16,8 @@ const DeleteProductController = require('../../controller/DeleteProductControlle
 const EditProductController = require('../../controller/EditProductController')
 const DeleteBannerController = require('../../controller/DeleteBannerController')
 const ViewAllSubCatController = require('../../controller/ViewAllSubCatController')
+const AddToCartController = require('../../controller/AddToCartController')
+const ViewAddToCartController = require('../../controller/ViewAddToCartController')
 
 
 
@@ -46,5 +48,8 @@ _.get('/viewbanner',ViewBannerController)
 _.post('/addvariant',upload.single('productImg'),AddVariantController)
 _.get('/viewvariant',ViewVariantController)
 _.get('/viewallsubcategory',ViewAllSubCatController)
+_.post('/addtocart',AddToCartController)
+_.get('/viewaddtocart',ViewAddToCartController)
+
 
 module.exports=_

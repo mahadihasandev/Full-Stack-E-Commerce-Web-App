@@ -24,8 +24,8 @@ function Banner() {
     
 
   return (
-    <div>
-      <Container className='bg-[#F8F9FA]'>
+    
+      <Container className='px-2 sm:px-3'>
         <Carousel>
           {bannerData.map((item) => (
             <Carousel.Item className='' key={item._id }> 
@@ -35,18 +35,19 @@ function Banner() {
                 width={1200} 
                 alt={item.title || "banner image"}
                 className="d-block w-100"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                 unoptimized={true}
+                priority
               />
               <Carousel.Caption>
-                <h3 className='text-black'>{item.title}</h3>
-                <p className='text-black'>{item.description}</p>
+                <h3 className='text-black text-sm sm:text-xl md:text-2xl'>{item.title}</h3>
+                <p className='text-black text-xs sm:text-sm md:text-base'>{item.description}</p>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
         </Carousel>
       </Container>
-    </div>
+    
   )
 }
 
