@@ -19,11 +19,11 @@ function NavbarMenu() {
 
   return (
     
-    <div className='relative'>
+    <div className='sticky top-0 z-50 '>
 
-    <Navbar expand="md" className="bg-body-tertiary border-b border-orange-200">
+    <Navbar expand="md" className="bg-body-tertiary border-b border-orange-200 bg-white/60! backdrop-blur-md">
       <Container className='px-2 sm:px-3'>
-        <Navbar.Brand className='z-10' href="/"><Image className='' height={50} width={60} src={logo} alt='image'/></Navbar.Brand>
+        <Navbar.Brand className='z-10' href="/"><Image className='' height={60} width={60} src={logo} alt='image'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto gap-2 md:gap-3 z-50"> 

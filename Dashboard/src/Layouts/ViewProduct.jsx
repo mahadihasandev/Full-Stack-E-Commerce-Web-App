@@ -96,7 +96,7 @@ const columns = [
     title: 'Image',
     dataIndex: 'image',
     key: 'image',
-     render: (text) =><img width='100px' src={`${import.meta.env.VITE_LOCAL_API}${text}`} alt="Image" />,
+     render: (text) =><img width='100px' src={`${text}`} alt="Image" />,
   },
   {
     title: 'Regular Price',

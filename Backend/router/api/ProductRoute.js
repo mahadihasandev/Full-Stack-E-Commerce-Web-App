@@ -18,6 +18,7 @@ const DeleteBannerController = require('../../controller/DeleteBannerController'
 const ViewAllSubCatController = require('../../controller/ViewAllSubCatController')
 const AddToCartController = require('../../controller/AddToCartController')
 const ViewAddToCartController = require('../../controller/ViewAddToCartController')
+const AddDiscountController = require('../../controller/AddDiscountController')
 
 
 
@@ -50,6 +51,7 @@ _.get('/viewvariant',ViewVariantController)
 _.get('/viewallsubcategory',ViewAllSubCatController)
 _.post('/addtocart',AddToCartController)
 _.get('/viewaddtocart',ViewAddToCartController)
+_.post('/adddiscount',AddDiscountController)
 
 
 module.exports=_

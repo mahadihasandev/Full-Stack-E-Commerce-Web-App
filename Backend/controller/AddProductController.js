@@ -3,7 +3,8 @@ const ProductSchema = require("../model/ProductSchema")
 let AddProductController=async (req,res)=>{
     let {name,description,image,saleprice,regularprice,slug}=req.body
     let existingProduct=await ProductSchema.find({name:name})
-
+    
+    
     if(existingProduct.length>0){
         res.send({error:'Product already exist'})
     }else{

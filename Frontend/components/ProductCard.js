@@ -1,4 +1,5 @@
 'use client'
+
 import Image from 'next/image';
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
@@ -34,11 +35,11 @@ function ProductCard({item}) {
   
   return (
     <Container className='pt-4 px-2 sm:px-3' >
-    <Row className='pb-0 mx-0 sm:mx-3 gx-2 sm:gx-3' xs='2' sm='3' lg='4'>
+    <Row className='pb-0 mx-0 sm:mx-3 gx-2 sm:gx-3' xs='2' sm='3' lg='5'>
       {item.map((item)=>(
-        <Col className='mb-3 d-flex justify-content-center' key={item._id}>
-        <Card className='shadow-[2px_2px_10px_-2px_#ea580c] hover:scale-105 scale-100 hoverEffect w-100' style={{ maxWidth: '16rem', minWidth: '140px' }}>
-      <Image className='border-b border-orange-200' width={250} height={200} alt='image' src={item.image} style={{ objectFit: 'cover', height: '255px', width: '100%' }} />
+        <Col key={item._id} className='mb-3 d-flex justify-content-center' >
+        <Card className='shadow-[2px_2px_10px_-2px_#ea580c] hover:scale-100 scale-90 hoverEffect w-100 ' style={{ maxWidth: '16rem', minWidth: '140px' }}>
+      <Image className='border-b border-orange-200 rounded-md' width={250} height={200} alt='image' src={item.image} style={{ objectFit: 'cover', height: '255px', width: '100%' }} />
       <Card.Body className='p-2 sm:p-3'>
         
         <Card.Title className='text-sm sm:text-base'>{item.name}</Card.Title>
@@ -49,6 +50,8 @@ function ProductCard({item}) {
       </Card.Body>
     </Card>
     </Col>
+    
+   
       ))}
       
     </Row>
